@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "WASH AND GLASSING",
+        "price": "100",
+        "description": "Deep Cleaning with high speed jet water Gun. Softner and polishing materials are used to clean and shine your car as like as new.",
+        "img": "https://i.ibb.co/vL0fXLX/car-wash.png"
+    },
+    {
+        "id": 2,
+        "name": "COMPLETE ANALYSIS",
+        "price": "300",
+        "description": "Fully automated machine is used to figure out all the possible problems inside and outside of engine. Also experienced personeels are assigned to fix the diagnosed problem.",
+        "img": "https://i.ibb.co/DQDWqKS/complete-analysis.png"
+    },
+    {
+        "id": 3,
+        "name": "ENGINE DIAGNOSTIC",
+        "price": "300",
+        "description": "This service is mainly focused on engine performance. A very intelligent system is examined the sound and other parameter of the engine and give skilled personeel direction about faults. Highly Skilled and experienced technician fix them out.",
+        "img": "https://i.ibb.co/Lp9Q0yC/engine-diagnostic.png"
+    },
+    {
+        "id": 4,
+        "name": "WHEEL ALIGNMENT",
+        "price": "150",
+        "description": "Wheel alignment is very very importan for your car. It can lead to accident. We offer a yearly package also for routine wheel alignment checkup. If you interested, Please contact to our office.",
+        "img": "https://i.ibb.co/8ggPb3k/wheel-alignment.png"
+    },
+    {
+        "id": 5,
+        "name": "OIL CHANGING",
+        "price": "100",
+        "description": "Oil Changing is routine & imporyant work for your car which may lead to shorten engine life. We offer a yearly package also for routine Oil changing. If you interested, Please contact to our office.",
+        "img": "https://i.ibb.co/wzT9nfB/oil-changing.png"
+    },
+    {
+        "id": 6,
+        "name": "BRAKE REPAIRING",
+        "price": "200",
+        "description": "Apart from repairing your car brakes we offer you a package that includes changing brake shoes with original one as well as other braking problem to fix. For more information, Please contact to our office.",
+        "img": "https://i.ibb.co/DLChnSV/brake-repairing.png"
+    }
+]

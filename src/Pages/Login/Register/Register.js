@@ -1,33 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { sendEmailVerification } from 'firebase/auth';
+import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
+    const [agree, setAgree] = useState(false)
 
     const navigate = useNavigate();
     const [
-        createUserWithEmailAndPassword,
-        user
-    ] = useCreateUserWithEmailAndPassword(auth);
+        createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    if (user) {
-        navigate('/home');
+    const [updateProfile, updating] = useUpdateProfile(auth);
+
+    if (loading || updating) {
+        return <Loading></Loading>
     }
 
-    const handleRegister = e => {
+    //just for fun. its absolutely optional
+    if (user) {
+        console.log('user', user)
+    }
+
+
+    const handleRegister = async e => {
         e.preventDefault();
         //it will work only for form tags.
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
+
         if (password === confirmPassword) {
-            createUserWithEmailAndPassword(email, password)
+            await createUserWithEmailAndPassword(email, password);
         }
+        else { alert('Your two password did not match') }
+
+
+        await updateProfile({ displayName: name });
+        console.log('updated profile')
+        navigate('/home');
     }
+
 
     return (
         <div className='container w-50 mx-auto mt-5'>
@@ -54,13 +71,16 @@ const Register = () => {
                     <Form.Control name='confirmPassword' type="password" placeholder="Re-Enter Password" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check className={`ps-2 ${agree ? '' : 'text-danger'}`} onClick={() => setAgree(!agree)} type="checkbox" label="Accept Intelligent Car Services Terms and Conditions" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                {/* <Button className={agree ? 'active' : 'disabled'} variant="primary" type="submit">
+                    Submit
+                </Button> */}
+                <Button disabled={!agree} variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>
-            <p className='mt-3'>Already have an Account?<Link to={'/login'} className='text-danger text-decoration-none fw-bold'>Please Login</Link></p>
+            <p className='mt-3'>Already have an Account?<Link to={'/login'} className='text-primary text-decoration-none fw-bold ms-2'>Please Login</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );

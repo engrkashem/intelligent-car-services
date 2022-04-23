@@ -5,8 +5,9 @@ import Service from '../Service/Service';
 import './Services.css'
 
 const Services = () => {
-
-    const [services] = useServices();
+    const url = `http://localhost:5000/services`;
+    // const stateDependency = [];
+    const [services] = useServices(url);
 
     return (
         <div id='services'>
@@ -14,7 +15,7 @@ const Services = () => {
             <div className='services-container'>
                 {
                     services.map(service => <Service
-                        key={service.id}
+                        key={service._id}
                         service={service}
                     ></Service>)
                 }

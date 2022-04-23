@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 
-const useServices = () => {
+const useServices = (url) => {
 
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('services.json')
+        fetch(url)
             .then(res => res.json())
             .then(data => setServices(data))
-    }, []);
+    }, [url]);
 
     return [services, setServices];
 };

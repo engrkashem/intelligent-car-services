@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import ManageServices from './ManageServices/ManageServices';
 import About from './Pages/About/About';
@@ -26,7 +27,7 @@ function App() {
         <Route path='/about' element={<About />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
-        <Route path='/checkout' element={
+        <Route path='/checkout/:serviceID' element={
           <RequireAuth>
             <Checkout />
           </RequireAuth>
@@ -44,6 +45,7 @@ function App() {
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

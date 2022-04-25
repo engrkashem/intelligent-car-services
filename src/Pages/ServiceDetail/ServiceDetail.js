@@ -13,7 +13,7 @@ const ServiceDetail = () => {
         <div>
             <h2>You Are About to Book: {service.name}</h2>
             <div className='text-center'>
-                <button onClick={() => navigate('/checkout')} className='btn btn-primary'> Proceed Checkout</button>
+                <button onClick={() => navigate(`/checkout/${serviceID}`)} className='btn btn-primary'> Proceed Checkout</button>
             </div>
         </div>
     );

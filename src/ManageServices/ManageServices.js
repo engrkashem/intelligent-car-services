@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import useServices from '../hooks/useServices';
 
 const ManageServices = () => {
@@ -38,7 +38,6 @@ const ManageServices = () => {
                         </div>)
                 }
             </div>
-            <ToastContainer></ToastContainer>
         </div>
     );
 };

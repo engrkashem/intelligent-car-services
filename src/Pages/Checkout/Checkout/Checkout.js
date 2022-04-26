@@ -17,7 +17,7 @@ const Checkout = () => {
 
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = data => {
+    const onSubmit = (data, e) => {
         const order = {
             email: user.email,
             service: service.name,
@@ -34,6 +34,8 @@ const Checkout = () => {
             })
             .catch(error => console.error(error))
 
+        e.target.reset();
+
         /* fetch('http://localhost:5000/order', {
             method: 'POST',
             headers: {
@@ -41,7 +43,7 @@ const Checkout = () => {
             },
             body: JSON.stringify(order),
         }); */
-    }
+    };
 
 
     /* const [user, setUser] = useState({
@@ -62,8 +64,8 @@ const Checkout = () => {
         <div className='w-75 mx-auto mt-5'>
             <h2 className='text-center'>Please Confirm Your Service</h2>
             <form className='w-75 mx-auto d-flex flex-column gap-3' onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder='Name' value={user.displayName} {...register("name")} readOnly disabled />
-                <input placeholder='Email' value={user.email} {...register("email")} readOnly disabled />
+                <input placeholder='Name' value={user?.displayName} {...register("name")} readOnly disabled />
+                <input placeholder='Email' value={user?.email} {...register("email")} readOnly disabled />
                 <input value={service.name} placeholder='Service' {...register("service", { required: true })} readOnly />
                 <textarea placeholder='Address' {...register("address", { required: true })} autoComplete='off' />
                 <input placeholder='Phone'  {...register("phone", { required: true })} />

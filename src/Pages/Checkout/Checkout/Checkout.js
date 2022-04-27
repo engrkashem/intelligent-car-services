@@ -12,7 +12,7 @@ const Checkout = () => {
     const [user] = useAuthState(auth);
 
     const { serviceID } = useParams();
-    const url = `http://localhost:5000/services/${serviceID}`;
+    const url = `https://secret-basin-73192.herokuapp.com/services/${serviceID}`;
     const [service] = useServices(url);
 
     const { register, handleSubmit } = useForm();
@@ -25,7 +25,7 @@ const Checkout = () => {
             address: data.address,
             phone: data.phone
         };
-        axios.post('http://localhost:5000/order', order)
+        axios.post('https://secret-basin-73192.herokuapp.com/order', order)
             .then(res => {
                 const { data } = res;
                 if (data.insertedId) {
@@ -36,7 +36,7 @@ const Checkout = () => {
 
         e.target.reset();
 
-        /* fetch('http://localhost:5000/order', {
+        /* fetch('https://secret-basin-73192.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

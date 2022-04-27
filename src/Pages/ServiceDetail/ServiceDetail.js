@@ -5,7 +5,7 @@ import useServices from '../../hooks/useServices';
 const ServiceDetail = () => {
     const { serviceID } = useParams();
     const navigate = useNavigate();
-    const url = `http://localhost:5000/services/${serviceID}`;
+    const url = `https://secret-basin-73192.herokuapp.com/services/${serviceID}`;
     // const stateDependency = {};
     const [service] = useServices(url);
 

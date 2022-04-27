@@ -3,13 +3,13 @@ import { toast } from 'react-toastify';
 import useServices from '../hooks/useServices';
 
 const ManageServices = () => {
-    const url = `http://localhost:5000/services`;
+    const url = `https://secret-basin-73192.herokuapp.com/services`;
     const [services, setServices] = useServices(url);
 
     const handleDelete = id => {
         const proceed = window.confirm('Are You Sure, You Want to Delete?');
         if (proceed) {
-            const url = `http://localhost:5000/services/${id}`;
+            const url = `https://secret-basin-73192.herokuapp.com/services/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })

@@ -5,7 +5,7 @@ import Service from '../Service/Service';
 import './Services.css'
 
 const Services = () => {
-    const url = `http://localhost:5000/services`;
+    const url = `https://secret-basin-73192.herokuapp.com/services`;
     // const stateDependency = [];
     const [services] = useServices(url);
 
